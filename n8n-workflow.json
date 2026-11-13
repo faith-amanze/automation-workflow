@@ -1,0 +1,54 @@
+{
+  "name": "Lesson Note Summary Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lesson-note",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "lesson-note-webhook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8001/summarise",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-api-key", "value": "change-me-secret" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ event_id: $json.body.event_id, student_email: $json.body.student_email, topic: $json.body.topic, lesson_note: $json.body.lesson_note, difficulty: $json.body.difficulty }) }}",
+        "options": {}
+      },
+      "name": "Call /summarise",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Webhook').item.json.body.student_email }}",
+        "subject": "=Your summary: {{ $('Webhook').item.json.body.topic }}",
+        "message": "={{ $json.summary }}",
+        "options": {}
+      },
+      "name": "Send Summary Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [520, 0]
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Call /summarise", "type": "main", "index": 0 }]] },
+    "Call /summarise": { "main": [[{ "node": "Send Summary Email", "type": "main", "index": 0 }]] }
+  },
+  "settings": {}
+}
