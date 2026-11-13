@@ -2,7 +2,7 @@
 
 **Author:** Faith Amanze
 **Date:** 13 November 2026
-**Stack:** n8n (webhook, HTTP Request, Send Email/SMTP), FastAPI backend, Groq (`llama-3.3-70b-versatile`)
+**Stack:** n8n (webhook, HTTP Request, Send Email/SMTP), FastAPI backend, Groq (`openai/gpt-oss-120b`; the first real-AI runs used `llama-3.3-70b-versatile`)
 
 ## 1. Workflow Diagram
 
@@ -75,6 +75,14 @@ HTTP 200
 ```
 
 ## 5. Security Rule
+**Evidence: backend re-test with `openai/gpt-oss-120b`** (after switching the model; same script, new event ID):
+
+```
+Test A (happy path, evt-222614): HTTP 200, five-bullet summary returned
+Test B (empty lesson_note):      HTTP 400 {"detail":"lesson_note is empty"}
+Test C (wrong key):              HTTP 401 {"detail":"Bad or missing API key"}
+Test D (same event_id as A):     HTTP 200, response identical to Test A
+```
 
 `/summarise` requires a secret `x-api-key` header. The backend reads the key from a `.env` file, `.env` is listed in `.gitignore` so it is never pushed to GitHub, and requests without the right key get a 401. The Groq key and the Gmail app password are also kept out of the code (`.env` and an n8n credential respectively). Improvement: move the `x-api-key` value in the n8n HTTP Request node into an n8n Header Auth credential, instead of typing it into the node.
 
@@ -111,7 +119,7 @@ Then, after the IPv6 fix, a connection timeout because port 465 was blocked (err
 
 ## 8. Final Result
 
-Sending one webhook request produced an email titled **Your summary: Photosynthesis** with a Groq-generated summary:
+Sending one webhook request produced an email titled **Your summary: Photosynthesis** with a Groq-generated summary (this email came from `llama-3.3-70b-versatile`; later runs used `openai/gpt-oss-120b`, see section 4):
 
 - Plants make their own food by turning sunlight, water, and carbon dioxide into sugar (glucose) and oxygen.
 - This process happens inside tiny structures called chloroplasts found in plant cells.
