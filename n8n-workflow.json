@@ -16,7 +16,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://localhost:8001/summarise",
+        "url": "http://127.0.0.1:8002/summarise",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -35,13 +35,15 @@
     },
     {
       "parameters": {
-        "sendTo": "={{ $('Webhook').item.json.body.student_email }}",
+        "fromEmail": "your-address@gmail.com",
+        "toEmail": "={{ $('Webhook').item.json.body.student_email }}",
         "subject": "=Your summary: {{ $('Webhook').item.json.body.topic }}",
-        "message": "={{ $json.summary }}",
+        "emailFormat": "text",
+        "text": "={{ $json.summary }}",
         "options": {}
       },
       "name": "Send Summary Email",
-      "type": "n8n-nodes-base.gmail",
+      "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [520, 0]
     }
