@@ -42,7 +42,7 @@ Legend: [x] done and evidenced, [ ] not done or needs checking before submission
 - [x] README with problem, solution, features, stack, setup, env vars, test command, API example
 - [x] All docs in `docs/` written (review, architecture, case study, demo, interview, LinkedIn)
 - [x] `GROQ_MODEL` default set to `openai/gpt-oss-120b` in `main.py` and `.env.example`
-- [ ] Confirm the screenshots in `docs/images/` display on GitHub
+- [x] Confirm the screenshots in `docs/images/` display on GitHub
 
 ## Portfolio readiness
 - [x] Repo shows files on GitHub (verified with `git ls-remote`)
