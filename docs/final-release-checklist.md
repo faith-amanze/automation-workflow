@@ -7,7 +7,7 @@ Legend: [x] done and evidenced, [ ] not done or needs checking before submission
 - [x] `.env.example` provided
 - [x] `n8n-workflow.json` included for import
 - [ ] Not deployed. The project runs locally only (stated honestly in the README)
-- [ ] Fresh-clone test: clone the repo into a new folder and follow the README exactly
+- [x] Fresh-clone test: clone the repo into a new folder and follow the README exactly
 
 ## Core features
 - [x] Webhook receives the five fields (report test 1)
@@ -46,7 +46,7 @@ Legend: [x] done and evidenced, [ ] not done or needs checking before submission
 
 ## Portfolio readiness
 - [x] Repo shows files on GitHub (verified with `git ls-remote`)
-- [ ] Repo description and topics set
+- [x] Repo description and topics set
 - [ ] LinkedIn post published
 - [ ] Demo rehearsed end to end at least twice
 - [ ] Optional: add a LICENSE file

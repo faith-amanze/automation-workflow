@@ -7,8 +7,8 @@
 
 ## 2. Name, description, topics
 - [ ] Name: `automation-workflow` is acceptable
-- [ ] Description: "n8n workflow that sends lesson notes to a FastAPI + Groq summariser and emails the summary to students"
-- [ ] Topics: `n8n`, `fastapi`, `groq`, `automation`, `webhook`, `python`, `llm`
+- [x] Description: "n8n workflow that sends lesson notes to a FastAPI + Groq summariser and emails the summary to students"
+- [x] Topics: `n8n`, `fastapi`, `groq`, `automation`, `webhook`, `python`, `llm`
 
 ## 3. Secrets scan (including history)
 - [x] `.env` is NOT in the repo; `.env.example` is
@@ -17,9 +17,9 @@
 - [x] No `gsk_` Groq key in any file or in git history
 
 ## 4. Files
-- [ ] Add the new docs and the updated `README.md`
+- [x] Add the new docs and the updated `README.md`
 - [x] `GROQ_MODEL` default set to `openai/gpt-oss-120b`
 
 ## 5. Final check
-- [ ] Fresh clone in a new folder, follow the README, and confirm it works
+- [x] Fresh clone in a new folder, follow the README, and confirm it works
 - [ ] Rehearse the demo twice
