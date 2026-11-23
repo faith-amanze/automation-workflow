@@ -12,3 +12,5 @@ body.json
 good.json
 empty.json
 webhook.json
+
+.pytest_cache/
