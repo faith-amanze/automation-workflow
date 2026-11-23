@@ -7,7 +7,7 @@ load_dotenv()
 
 API_KEY = os.getenv("API_KEY", "change-me-secret")
 USE_GROQ = os.getenv("USE_GROQ", "false").lower() == "true"
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
 app = FastAPI(title="Summarise API")
 
