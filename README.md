@@ -30,7 +30,7 @@ A tutor-side system (or any script) sends a lesson note to an n8n webhook. n8n f
 | Backend | Python, FastAPI, Uvicorn |
 | AI | Groq API, `openai/gpt-oss-120b` |
 | Email | SMTP (Gmail app password) |
-| Tests | PowerShell script using `curl.exe` |
+| Tests | pytest, GitHub Actions, PowerShell script using `curl.exe` |
 
 ## Setup (Windows / PowerShell, local)
 
@@ -91,7 +91,7 @@ With the backend running:
 .\test_requests.ps1
 ```
 
-It checks the happy path (200), empty text (400), wrong key (401), and a repeated `event_id` (identical response). These are scripted request checks, not yet an automated pytest suite.
+It checks the happy path (200), empty text (400), wrong key (401), and a repeated `event_id` (identical response). The same checks also run as a six-test pytest suite in `tests/test_api.py` (`pip install pytest httpx`, then `python -m pytest -v`) and on every push through GitHub Actions.
 
 ## API example
 

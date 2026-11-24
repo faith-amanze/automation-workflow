@@ -19,11 +19,11 @@ Show the diagram in `docs/architecture.md`.
 "Webhook, then an HTTP Request to my FastAPI endpoint, which calls Groq, then n8n sends the email over SMTP. Webhook data arrives under `body`, and I build the JSON with `JSON.stringify` so quotes in a note can't break it."
 
 ## 5. Test and proof (3:00 to 3:40)
-Run `.\test_requests.ps1`.
-"Success returns 200, an empty note returns 400, a wrong key returns 401, and a repeated event returns the identical saved summary." Mention honestly: "These are scripted request tests. Automated pytest is my next step."
+Run `python -m pytest -v`, then show the green check in the GitHub Actions tab.
+"Success returns 200, an empty note returns 400, a wrong key returns 401, and a repeated event returns the identical saved summary." Mention honestly: "These are six pytest tests in fake-summary mode, and GitHub Actions runs them on every push. The Groq call and the n8n steps I tested by hand."
 
 ## 6. Closing (3:40 to 4:10)
-"The hardest part was email: IPv6 errors, then a blocked SMTP port. I built this solo with an AI coding assistant and tested each part separately. It runs locally today. Next I'll add pytest, CI, and deployment. Thank you."
+"The hardest part was email: IPv6 errors, then a blocked SMTP port. I built this solo with an AI coding assistant and tested each part separately. It runs locally today. Next I'll add deployment and more test coverage. Thank you."
 
 ## If something fails live
 Show the screenshots in `docs/images/` and the report's test tables. Say what you'd check first: the backend `/health`, then the API key, then the SMTP port.

@@ -25,7 +25,7 @@ One POST request triggers a three-step pipeline: receive, summarise, deliver. No
 I built this solo, using an AI coding assistant to help write and debug it. I designed the flow, tested each part separately, worked through the errors, and documented the results. I can explain each part of the system.
 
 ## Tech stack
-n8n, Python, FastAPI, Uvicorn, Groq (`openai/gpt-oss-120b`), SMTP (Gmail), PowerShell test script.
+n8n, Python, FastAPI, Uvicorn, Groq (`openai/gpt-oss-120b`), SMTP (Gmail), pytest, GitHub Actions, PowerShell test script.
 
 ## Challenges
 The hardest was getting email to send. Gmail OAuth needed a Google Cloud project, so I used SMTP with an app password. Then IPv6 caused `ENETUNREACH`, fixed with `--dns-result-order=ipv4first`. Finally port 465 timed out; `Test-NetConnection` showed 587 was open. Other issues included a port clash on 8001 and `localhost` resolving to IPv6 while Uvicorn listened on IPv4. All 12 are documented in the full report.
@@ -40,7 +40,7 @@ The hardest was getting email to send. Gmail OAuth needed a Google Cloud project
 ## Future improvements
 - Move the API key into an n8n Header Auth credential
 - Use a database or Redis for idempotency, and prevent duplicate emails
-- Add pytest tests and GitHub Actions CI
+- Add a mocked test for the Groq call and an end-to-end test of the n8n workflow
 - Deploy the backend and n8n
 - Add retries and a nicer email template
 

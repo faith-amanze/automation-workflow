@@ -13,7 +13,7 @@ There is no database. The backend keeps processed `event_id` values and summarie
 The backend returns clear codes: 401 for a bad key, 400 for an empty note, 422 for invalid JSON. A repeated `event_id` returns the saved result without a new AI call. In n8n, a failed node stops the run and shows the error, which is how I found the SMTP problems. What's missing: retries and failure alerts, so those are on my list.
 
 ## 5. What would you improve next?
-First, move the API key into an n8n credential. Second, add pytest tests and GitHub Actions CI, because right now my tests are a PowerShell script. Third, replace the in-memory store with a database and stop duplicate emails inside n8n. Then deploy it so others can try it without local setup.
+First, move the API key into an n8n credential. Second, widen the tests: I have six pytest tests running in GitHub Actions, but they only cover the API in fake-summary mode, so I would add a mocked Groq test and an end-to-end check of the n8n workflow. Third, replace the in-memory store with a database and stop duplicate emails inside n8n. Then deploy it so others can try it without local setup.
 
 ## Bonus: "Did you use AI to build this?"
 Yes. I built it solo with an AI coding assistant for writing and debugging. I designed the flow, ran every test, diagnosed the port issue with `Test-NetConnection` myself, and I can walk through each part of the code.

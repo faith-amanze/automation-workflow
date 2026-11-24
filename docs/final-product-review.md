@@ -36,6 +36,6 @@ I read each error message, worked through the causes with my coding assistant, a
 ## What I would improve next
 1. Move the `x-api-key` into an n8n Header Auth credential instead of typing it into the node.
 2. Replace the in-memory idempotency store with a database or Redis, and stop duplicate emails inside n8n.
-3. Add automated pytest tests and a GitHub Actions workflow.
+3. Add a mocked test for the Groq call and an end-to-end test of the n8n workflow.
 4. Deploy the backend and n8n so the project can be tried without local setup.
 5. Add retries, and a nicer email template.

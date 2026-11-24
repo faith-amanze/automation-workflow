@@ -35,8 +35,8 @@ Legend: [x] done and evidenced, [ ] not done or needs checking before submission
 ## Tests
 - [x] Scripted request tests in `test_requests.ps1` (200, 400, 401, idempotency)
 - [x] Each workflow part tested separately, then end to end
-- [ ] No automated pytest suite yet
-- [ ] No CI (GitHub Actions) yet
+- [x] Automated pytest suite: 6 tests in `tests/test_api.py` (health, 200, 400, 401 twice, idempotency)
+- [x] CI: GitHub Actions runs the pytest suite on every push (`.github/workflows/tests.yml`)
 
 ## Documentation
 - [x] README with problem, solution, features, stack, setup, env vars, test command, API example
